@@ -1,0 +1,24 @@
+Aufgabe Labor COMPARCH
+
+0. Vorbereitung: 
+
+Lesen Sie sich in die Dokumentation des DLX-Simulators (EinführungDLX.pdf) ein. 
+Beachten Sie auch die Traps, diese werden für den Versuch gebraucht. Im Tannenbaum sind diese im Kapitel 5.6.4 nachzulesen.
+
+1. Schreiben Sie ein Programm für den DLX-Simulator.
+Das Programm soll zunächst 4 Zahlen (zwei Integer und zwei floatingpoint Zahlen) von aus einer Datei lesen, danach sollen diese (möglichst performant) miteinander multipliziert werden. 
+Das Ergebnis soll auf der Konsole ausgegeben werden.  
+
+2. Vollziehen Sie auf dem Papier nach, wie viele Zyklen eine sequenzielle Abarbeitung des Programmes benötigen würde. 
+
+3. Simulieren sie nun die Abarbeitung des Programms auf dem DLX Simulator und erklären Sie die Differenz zur vorhersage.
+
+//4. Führen Sie schriftlich aus, was beim hinzufügen einer weiteren Pipelinestufe (zwischen XX und XY) passieren würde
+
+//5. 
+4. Gehen Sie nun davon aus, dass die unterschiedlichen Operationen, unterschiedlich lange brauchen.
+Die ALU braucht nur einen Taktzyklus für Operationen.
+Die Floatingpointunit benötigt zwei Taktzyklen. 
+Lade operationen brauchen 3 und speicheroperationen zufällig 4 Zyklen. 
+a) Schreiben Sie den Ablauf für das Ausführen mit diesen Verzögerungen auf (dafür kann auch der Simulator benutzt werden). 
+b) Überlegen Sie ob eine Erweiterung der Pipeline auf eine Superskalare architektur mit zwei ALUs, einer Gleitkomma Einheit und je einer Einheit zum Laden und Speichern für das Programm Sinnvoll wäre? Simulieren sie den Ablauf (auf Papier). Wie groß wäre der Performancegewinn/Verlust im Vergleich zur aufgabe 4a) (in Prozent)?
