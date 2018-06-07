@@ -30,21 +30,31 @@ main:
       
       addi r1, r0, Prompt2 
       jal InputFloat 
-      nop
-      nop
+      nop ; required for branch delay slots
+      nop ; required for branch delay slots
       
-      sw Floats, f0
+      sw Floats, r1 ; mov first floatingpoint number to $Floats
       
       addi r1, r0, Prompt2 
       jal InputFloat 
       nop
       nop
       
-      sw Floats, f0
+      sw Floats, r0 ; mov second floatingpoint number to $Floats
+      
+      ;Calculate the result
+      ;multiply both of the integers
+      
+      lw r1, Int
+      lw r2, Int
+      mult r3, r1,r2
+      lf f1, Floats
+      lf f2, Floats
+      mult f3, f1,f2
       
       
 			; Output of the calculated result
-			sw		PrintfValue, r1
+			sw		PrintfValue, r1 
 			addi	r14, r0, PrintParameter
 			trap	5 
 			; End of program
@@ -99,7 +109,7 @@ InputUnsigned:
 
 Loop:		; reads digits to end of line
 		lbu		r3,0(r2)
-                nop ; required because of data dependency on R3
+    nop ; required because of data dependency on R3
 		seqi		r5,r3,10	;LF -> Exit
 		bnez		r5,Finish
 		nop ; required for branch delay slots
