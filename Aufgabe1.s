@@ -34,8 +34,8 @@ main:
       
       sw Int2, r1 ; mov third number to $Int2
       
-      addi r1, r0, Prompt2 
-      jal InputFloat 
+      addi r1, r0, Prompt 
+      jal InputUnsigned 
       nop
       nop
       
@@ -49,7 +49,7 @@ main:
       mult r3, r1,r2 
       
       lw r1, Int2
-      lw r2, Int3 
+      lw r2, Int2
       mult r4, r1, r2 
       
       mult r1, r3,r4
