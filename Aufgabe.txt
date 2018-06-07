@@ -25,15 +25,18 @@ Das Ergebnis soll auf der Konsole ausgegeben werden.
 Orientieren Sie sich dabei am Beispiel example_6_input.s aus den DLX Beispielen.
 Sie sollten etwa 20 Zeilen Code hinzufügen.
 
-2. Simulieren sie nun die Abarbeitung des Programms auf dem DLX Simulator, wie viele Zyklen braucht das Programm?
+2. Simulieren sie nun die Abarbeitung des Programms auf dem DLX Simulator, benutzen sie dabei Zahlen < 10 wie viele Zyklen braucht das Programm?
 -> 192 
 
-//4. Führen Sie schriftlich aus, was beim hinzufügen einer weiteren Pipelinestufe (zwischen XX und XY) passieren würde
+3. Benutzen sie zahlen > 10 und erklären Sie den Unterschied der Ausführungszeit
 
-//5. 
-4. Gehen Sie nun davon aus, dass die unterschiedlichen Operationen, unterschiedlich lange brauchen.
-Die ALU braucht nur einen Taktzyklus für Operationen.
-Die Floatingpointunit benötigt zwei Taktzyklen. 
-Lade operationen brauchen 3 und speicheroperationen zufällig 4 Zyklen. 
-a) Schreiben Sie den Ablauf für das Ausführen mit diesen Verzögerungen auf (dafür kann auch der Simulator benutzt werden). 
-b) Überlegen Sie ob eine Erweiterung der Pipeline auf eine Superskalare architektur mit zwei ALUs, einer Gleitkomma Einheit und je einer Einheit zum Laden und Speichern für das Programm Sinnvoll wäre? Simulieren sie den Ablauf (auf Papier). Wie groß wäre der Performancegewinn/Verlust im Vergleich zur aufgabe 4a) (in Prozent)?
+4. Springen Sie in ihrem Programm vor die Stelle wo die Multiplikationen ausgeführt werden (~ab Cycle 150). 
+
+5. 
+//4. Führen Sie schriftlich aus, was beim hinzufügen einer weiteren Pipelinestufe (zwischen XX und XY) passieren würde
+//4. Gehen Sie nun davon aus, dass die unterschiedlichen Operationen, unterschiedlich lange brauchen.
+// Die ALU braucht nur einen Taktzyklus für Operationen.
+//Die Floatingpointunit benötigt zwei Taktzyklen. 
+//Lade operationen brauchen 3 und speicheroperationen zufällig 4 Zyklen. 
+//a) Schreiben Sie den Ablauf für das Ausführen mit diesen Verzögerungen auf (dafür kann auch der Simulator benutzt werden). 
+//b) Überlegen Sie ob eine Erweiterung der Pipeline auf eine Superskalare architektur mit zwei ALUs, einer Gleitkomma Einheit und je einer Einheit zum Laden und Speichern für das Programm Sinnvoll wäre? Simulieren sie den Ablauf (auf Papier). Wie groß wäre der Performancegewinn/Verlust im Vergleich zur aufgabe 4a) (in Prozent)?
