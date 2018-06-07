@@ -2,14 +2,14 @@
 ; ----------------------
 
 Prompt:		.asciiz		"Please enter an integer >1 : \n"
-
 PrintfFormat:	.asciiz		"Result: %d.\n"
 				.align		2
 PrintParameter:	.word		PrintfFormat
-Int:	.space 		1
-Int2: .space    1
-Int3: .space    1
-Int4: .space    1
+PrintfValue:	.space 		4
+Int:	.space 		4
+Int2: .space    4
+Int3: .space    4
+Int4: .space    4
 
 			.text
 			.global	main
@@ -41,7 +41,7 @@ main:
       nop
       nop
       
-      sw Int4, r0 ; mov forth number to $Int4
+      sw Int4, r1 ; mov forth number to $Int4
       
       ;Calculate the result
       ;multiply both of the integers
@@ -55,8 +55,9 @@ main:
       mult r4, r1, r2 
       
       mult r1, r3,r4
+      
 			; Output of the calculated result
-			sw		PrintfFormat, r1 
+			sw	  PrintfValue, r1 
 			addi	r14, r0, PrintParameter
 			trap	5 
 			; End of program

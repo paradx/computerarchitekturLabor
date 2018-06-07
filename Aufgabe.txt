@@ -16,16 +16,17 @@ Hilfsmittel:
 Lesen Sie sich in die Dokumentation des DLX-Simulators (EinführungDLX.pdf) ein. 
 Beachten Sie auch das Konzept von Traps, diese werden für den Versuch gebraucht. Im Tannenbaum sind diese im Kapitel 5.6.4 nachzulesen.
 Weiterhin ist es Hilfreich das Dokument "Befehlssatz.pdf" (ausgedruckt) mit zu bringen.
+Beachten Sie, dass die Angaben für die Standardoptionen ("use-forwarding:true" und "Mips-compatibility-Mode= true", die Branchprediction ist None)
+
 
 1. Schreiben Sie ein Programm für den DLX-Simulator.
-Das Programm soll zunächst 4 Zahlen (zwei Integer und zwei floatingpoint Zahlen) aus einer Datei lesen, danach sollen diese
-/* (möglichst performant) */
-miteinander multipliziert werden. 
+Das Programm soll zunächst 4 Integer-Zahlen aus einer Datei lesen, danach sollen diese möglichst performant miteinander multipliziert werden. 
 Das Ergebnis soll auf der Konsole ausgegeben werden.  
+Orientieren Sie sich dabei am Beispiel example_6_input.s aus den DLX Beispielen.
+Sie sollten etwa 20 Zeilen Code hinzufügen.
 
-2. Vollziehen Sie auf dem Papier nach, wie viele Zyklen eine sequenzielle Abarbeitung des Programmes benötigen würde. 
-
-3. Simulieren sie nun die Abarbeitung des Programms auf dem DLX Simulator und erklären Sie die Differenz zur vorhersage.
+2. Simulieren sie nun die Abarbeitung des Programms auf dem DLX Simulator, wie viele Zyklen braucht das Programm?
+-> 192 
 
 //4. Führen Sie schriftlich aus, was beim hinzufügen einer weiteren Pipelinestufe (zwischen XX und XY) passieren würde
 
