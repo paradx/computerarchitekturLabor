@@ -6,8 +6,10 @@ Prompt:		.asciiz		"Please enter an integer >1 : \n"
 PrintfFormat:	.asciiz		"Result: %d.\n"
 				.align		2
 PrintParameter:	.word		PrintfFormat
-Int:	.space 		2
-Int2: .space    2
+Int:	.space 		1
+Int2: .space    1
+Int3: .space    1
+Int4: .space    1
 
 			.text
 			.global	main
@@ -25,31 +27,31 @@ main:
 			nop ; required for branch delay slots
 			nop ; required for branch delay slots
       
-      sw Int, r1      ; mov second number to $Int
+      sw Int2, r1      ; mov second number to $Int2
       
       addi r1, r0, Prompt
       jal InputUnsigned
       nop ; required for branch delay slots
       nop ; required for branch delay slots
       
-      sw Int2, r1 ; mov third number to $Int2
+      sw Int3, r1 ; mov third number to $Int3
       
       addi r1, r0, Prompt 
       jal InputUnsigned 
       nop
       nop
       
-      sw Int2, r0 ; mov forth number to $Int2
+      sw Int4, r0 ; mov forth number to $Int4
       
       ;Calculate the result
       ;multiply both of the integers
       
       lw r1, Int
-      lw r2, Int
+      lw r2, Int2
       mult r3, r1,r2 
       
-      lw r1, Int2
-      lw r2, Int2
+      lw r1, Int3
+      lw r2, Int4
       mult r4, r1, r2 
       
       mult r1, r3,r4
