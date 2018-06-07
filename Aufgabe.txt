@@ -6,7 +6,7 @@ Lesen Sie sich in die Dokumentation des DLX-Simulators (EinführungDLX.pdf) ein.
 Beachten Sie auch die Traps, diese werden für den Versuch gebraucht. Im Tannenbaum sind diese im Kapitel 5.6.4 nachzulesen.
 
 1. Schreiben Sie ein Programm für den DLX-Simulator.
-Das Programm soll zunächst 4 Zahlen (zwei Integer und zwei floatingpoint Zahlen) von aus einer Datei lesen, danach sollen diese
+Das Programm soll zunächst 4 Zahlen (zwei Integer und zwei floatingpoint Zahlen) aus einer Datei lesen, danach sollen diese
 /* (möglichst performant) */
 miteinander multipliziert werden. 
 Das Ergebnis soll auf der Konsole ausgegeben werden.  
