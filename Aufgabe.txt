@@ -1,9 +1,21 @@
 Aufgabe Labor COMPARCH
 
+Thema: 
+Geschwindigkeitsoptimierung von Prozessoren mittels Pipelining und Superskalarer-Architektur
+
+Hilfsmittel: 
+- DLX-Simulator
+- Papier
+- Stift
+- Tannenbaum "Rechnerarchitektur"
+- Editor nach Wahl
+- Beispiel example_6_input.s
+
 0. Vorbereitung: 
 
 Lesen Sie sich in die Dokumentation des DLX-Simulators (EinführungDLX.pdf) ein. 
-Beachten Sie auch die Traps, diese werden für den Versuch gebraucht. Im Tannenbaum sind diese im Kapitel 5.6.4 nachzulesen.
+Beachten Sie auch das Konzept von Traps, diese werden für den Versuch gebraucht. Im Tannenbaum sind diese im Kapitel 5.6.4 nachzulesen.
+Weiterhin ist es Hilfreich das Dokument "Befehlssatz.pdf" (ausgedruckt) mit zu bringen.
 
 1. Schreiben Sie ein Programm für den DLX-Simulator.
 Das Programm soll zunächst 4 Zahlen (zwei Integer und zwei floatingpoint Zahlen) von aus einer Datei lesen, danach sollen diese
