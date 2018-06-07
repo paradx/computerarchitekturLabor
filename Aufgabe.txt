@@ -28,15 +28,12 @@ Sie sollten etwa 20 Zeilen Code hinzufügen.
 2. Simulieren sie nun die Abarbeitung des Programms auf dem DLX Simulator, benutzen sie dabei Zahlen < 10 wie viele Zyklen braucht das Programm?
 -> 192 
 
-3. Benutzen sie zahlen > 10 und erklären Sie den Unterschied der Ausführungszeit
+3. Benutzen sie zahlen > 10 und erklären Sie den Unterschied der Ausführungszeit. Dafür können Sie die Theorien mit dem Simulator überprüfen. 
 
 4. Springen Sie in ihrem Programm vor die Stelle wo die Multiplikationen ausgeführt werden (~ab Cycle 150). 
+Legen Sie da ob und wenn ja warum, wenn nein warum nicht, das Einführen einer Superskalaren-Architektur (Zwei ALUs) sinnvoll ist. Nehmen Sie dabei an, dass Rechenoperationen (addi, multi, etc.) jeweils 2 Zyklen für jede Berechnung brauchen. Die Restlichen Stufen (außer das Speichern) der Pipeline jeweils nur einen. 
 
-5. 
-//4. Führen Sie schriftlich aus, was beim hinzufügen einer weiteren Pipelinestufe (zwischen XX und XY) passieren würde
-//4. Gehen Sie nun davon aus, dass die unterschiedlichen Operationen, unterschiedlich lange brauchen.
-// Die ALU braucht nur einen Taktzyklus für Operationen.
-//Die Floatingpointunit benötigt zwei Taktzyklen. 
-//Lade operationen brauchen 3 und speicheroperationen zufällig 4 Zyklen. 
-//a) Schreiben Sie den Ablauf für das Ausführen mit diesen Verzögerungen auf (dafür kann auch der Simulator benutzt werden). 
-//b) Überlegen Sie ob eine Erweiterung der Pipeline auf eine Superskalare architektur mit zwei ALUs, einer Gleitkomma Einheit und je einer Einheit zum Laden und Speichern für das Programm Sinnvoll wäre? Simulieren sie den Ablauf (auf Papier). Wie groß wäre der Performancegewinn/Verlust im Vergleich zur aufgabe 4a) (in Prozent)?
+
+5. Würde der Simulator auch Floatingpointoperationen unterstützen (was er nicht tut) und man würde zwei der Integer werte mit Floationpoint Zahlen ersetzten, würde die Reihenfolger der Operationen bei einer superskalaren Architektur (mit zwei Integer ALUs und einer FloatingpointALU) einen Unterschied machen? 
+Wenn ja, was wäre die Optimale Reihenfolge der Operationen um das Produkt aller vier Faktoren zu bekommen?
+
