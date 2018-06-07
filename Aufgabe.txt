@@ -18,7 +18,7 @@ Beachten Sie auch das Konzept von Traps, diese werden für den Versuch gebraucht
 Weiterhin ist es Hilfreich das Dokument "Befehlssatz.pdf" (ausgedruckt) mit zu bringen.
 
 1. Schreiben Sie ein Programm für den DLX-Simulator.
-Das Programm soll zunächst 4 Zahlen (zwei Integer und zwei floatingpoint Zahlen) von aus einer Datei lesen, danach sollen diese
+Das Programm soll zunächst 4 Zahlen (zwei Integer und zwei floatingpoint Zahlen) aus einer Datei lesen, danach sollen diese
 /* (möglichst performant) */
 miteinander multipliziert werden. 
 Das Ergebnis soll auf der Konsole ausgegeben werden.  
