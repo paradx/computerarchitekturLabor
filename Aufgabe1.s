@@ -1,6 +1,11 @@
+; InputUnsigned function used from WINDLX examples:
+;*********** WINDLX Ex.1: Read a positive integer number *************
+;*********** (c) 1991 Günther Raidl			 *************
+;*********** Modified 1992 Maziar Khosravipour		 *************
+;*********** Modified 2018 Linus Andrae, Michael Sved ***********
+
 ;Loesung fuer Aufgabe 1:
 ; ----------------------
-
 Prompt:		.asciiz		"Please enter an integer >1 : \n"
 PrintfFormat:	.asciiz		"Result: %d.\n"
 				.align		2
@@ -10,7 +15,6 @@ Int:	.space 		4
 Int2: .space    4
 Int3: .space    4
 Int4: .space    4
-
 			.text
 			.global	main
 main:
@@ -26,7 +30,6 @@ main:
 			jal		InputUnsigned ; call of InputUnsigned
 			nop ; required for branch delay slots
 			nop ; required for branch delay slots
-      
       sw Int2, r1      ; mov second number to $Int2
       
       addi r1, r0, Prompt
@@ -45,7 +48,6 @@ main:
       
       ;Calculate the result
       ;multiply both of the integers
-      
       lw r1, Int
       lw r2, Int2
       mult r3, r1,r2 
@@ -55,7 +57,6 @@ main:
       mult r4, r1, r2 
       
       mult r1, r3,r4
-      
 			; Output of the calculated result
 			sw	  PrintfValue, r1 
 			addi	r14, r0, PrintParameter
