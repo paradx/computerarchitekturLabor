@@ -1,11 +1,12 @@
 ; InputUnsigned function used from WINDLX examples:
-;*********** WINDLX Ex.1: Read a positive integer number *************
-;*********** (c) 1991 Günther Raidl			 *************
-;*********** Modified 1992 Maziar Khosravipour		 *************
-;*********** Modified 2018 Linus Andrae, Michael Sved ***********
+;----------- WINDLX Ex.1: Read a positive integer number
+;----------- (c) 1991 Günther Raidl			 
+;----------- Modified 1992 Maziar Khosravipour		 
+;----------- Modified 2018 Linus Andrae, Michael Sved 
 
 ;Loesung fuer Aufgabe 1:
 ; ----------------------
+
 Prompt:		.asciiz		"Please enter an integer >1 : \n"
 PrintfFormat:	.asciiz		"Result: %d.\n"
 				.align		2
@@ -73,8 +74,7 @@ main:
 ;-----------------------------------------------------------------------------
 
 		.data
-
-		; Data for Read-Trap
+	; Data for Read-Trap
 ReadBuffer:	.space		80
 ReadPar:	  .word		  0,ReadBuffer,80
 
@@ -108,9 +108,6 @@ InputUnsigned:
 		addi		r2,r0,ReadBuffer
 		addi		r1,r0,0
 		addi		r4,r0,10	;Decimal system
-
-
-		
 
 Loop:		; reads digits to end of line
 		lbu		r3,0(r2)
