@@ -1,0 +1,152 @@
+\documentclass[a4paper,ngerman]{scrartcl} 
+                        % ngerman als Sprache, A4, scrartcl
+
+\usepackage[utf8]{inputenc} 
+                        % sinnvolles encoding
+
+\usepackage{biblatex}   % Literaturverzeichnis
+\usepackage{babel}      % Sprachanpassung an deutsch (ngerman) 
+\usepackage{csquotes}   % für Klammern 
+\usepackage{hyperref}   % links in der PDF
+\usepackage{listings}   % Einbindung von Codesnippets 
+\bibliography{lit.bib}  % Einbinden des Bib files 
+
+%Text für Subtitle als command um an mehreren Stellen einzubinden
+\newcommand{\subtitletext}{Einführung in Piplining und superskalare Architektur  mit dem DLX Simulator am Beispiel eines Multiplikators}
+
+% Dokumenten title
+\title{Labor Computerarchitektur}
+
+% Untertitel setzen 
+\subtitle{\subtitletext}
+
+\author{Michael Sved  5001977\\ Linus Andrae 5001800}
+
+\date{Juni 2018}
+
+\begin{document}
+% Micheal: 
+% Kompetenzen Buzzwords
+%Überarbeiten der aktuellen Form
+% 
+% Linus: 
+% 
+% Überarbeiten der aktuellen Form
+% Ergebnisdokumentation 
+% Aufgabentext 
+
+%ABGABE 14.07.2018
+
+\newcommand{\einfuehrungstext}{In diesem Versuch sollen die Themen Pipelining und superskalare Architektur an einem praktischen Beispiel mit dem DLX Simulator bearbeitet werden. 
+Piplining ist eine Möglichkeit parallelität in einen Prozessor einzubringen, in dem der Datenweg mit Latches in kleinere Einheiten geteilt wird (siehe \cite[S. 314]{TaneRech2014}). Dies führt dazu, dass man Befehle starten kann, während die vorherigen Befehle noch nicht vollständig abgearbeitet sind, sondern sich in den weiteren Bearbeitungseinheiten befinden.
+Bei gleichem Takt führt dies zu einem höheren Durchsatz an Befehlen. \\
+Der DLX Simulator bietet eine 5-Stufige Pipeline (IF = Instruction Fetch, ID = Instruction Decode, EX = Execute, MEM = Arbeitsspeicher I/O, WB = Write Back). \\
+Bei Superskalarer Architektur werden teile der Pipeline in Hardware echt paralell angelegt. Da das Starten und Dekodieren im Vergleich zum berechnen schnell geht, kann Beispielsweise die EX Stufe (EX im Simulator) in parallel arbeitende Einheiten zerlegt werden, wobei z.B. eine auf Fließkommaoperationen spezialisierte Einheiten eingefügt werden kann. Die ersten Stufen der Pipeline dekodieren einen Befehl, rufen die Operanden ab und geben dann die Berechnung an eine der mehreren ALUs weiter. }
+
+
+\maketitle
+\thispagestyle{empty}
+%\newpage
+%\thispagestyle{empty}
+\tableofcontents
+\newpage
+\setcounter{page}{1}
+\section{Einführung}
+%TODO: Definitionen 
+\einfuehrungstext
+\subsection{Thema}
+Dieser Versuch soll mittels eines Multiplikationsprogramms das Prinzip der Geschwindigkeitsoptimierung von Prozessoren mittels Pipelining am Beispiel des DLX-Simulators praktisch zeigen. 
+Des Weiteren soll superskalare Architektur Theoretisch an diesem Beispiel behandelt werden. 
+
+\subsection{Hilfsmittel}
+\begin{itemize}
+    \item DLX-Simulator v1.0-6
+    \item Beispiel example\_6\_input.s
+\end{itemize}
+
+\subsection{Lernziele und Kompetenzen}
+\label{kompetenzen}
+Bei diesem Versuch sollen sich die Teilnehmenden des Labors mit dem DLX-Simulator auseinandersetzen und an einer praktischen Aufgabe das Prinzip des Pipelinings analysieren. \\
+Dabei soll ein einfaches Multiplikationsprogramm für die MIPS Architektur, welches der Simulator nutzt, geschrieben und dessen Ausführung im Simulator analysiert werden. \\
+Kernkompetenzen die bei diesem Versuch benötigt werden sind:
+
+\begin{itemize}
+    \item Wissen aus der COMPARCH Vorlesungen über den Datenweg, Pipelining und superskalare Architektur anwenden
+    \item Analysieren des Pipelining-Prinzipien mittels eines Simulators
+    \item Anwendung von Assemblerartiger Programmierung des DLX Simulators
+    \item Verstehen des Programmablauf auf Prozessorebene (Datenpfad der Mikroarchitektur)
+\end{itemize}
+
+\section{Vorbereitung}
+Die Laborteilnehmenden sollten sich zunächst in die Dokumentation des DLX-Simulators (EinführungDLX.pdf) einlesen, um Programme für diesen Simulator zu schreiben.
+Im Tannenbaum und im Vorlesungsskript sind die Kapitel zum Thema Pipelining ebenfalls zu wiederholen.
+Weiterhin ist es Hilfreich das Dokument \enquote{Befehlssatz.pdf} (ausgedruckt) mitzubringen, um das benötigte Programm für den Simulator zu schreiben.
+Das Beispiel 6 soll als Grundlage des zu schreibenden Programms dienen, da dieses die wichtigsten Bausteine die zum Ausführen der benötigten Multiplikation sowie Ein- und Ausgabe bereits implementiert, es muss einzig die Anzahl der Multiplikationen erhöht werden. 
+Das Labor eignet sich, sobald das Thema Pipelining und superskalare Architektur in der Vorlesung behandelt wurde.
+\newline (Zeitaufwand für die Vorbereitung: 90 Minuten)
+\section{Aufgaben und Lösungen}
+In diesem Versuch soll zunächst ein Programm mit dem DLX-Simulator erstellt werden bei dem die Grundlegende Funktion des Simulators und seinem Befehlssatz klar werden soll. \\
+Auf Grundlage dieses Programms soll im Anschluss die Funktionsweise der Pipeline veranschaulicht werden und Vor- und Nachteile ausgearbeitet werden. 
+Am Ende soll in der Theorie die Vorteile und evtl. Probleme von superskalarer Architektur ergründet werden.  \\
+Im folgenden werden die Einzelnen werden die einzelnen Aufgaben dargestellt. \\
+Die Aufwandschätzung und Bewertungsvorschlag sind in Klammern angegeben.  \\
+Die Gesamtarbeitszeit ist auf 210 Minuten Ausgelegt (exkl. Vorbereitung). \\
+\textit{In Kursiv ist die Musterlösung beschrieben}\\
+\texttt{In Festbreitenschrift ist die erwartete Lösungsdokumentation beschrieben}\\
+Die Lösung soll zum Ende der Laborzeit abgegeben und bewertet werden. 
+%
+\begin{enumerate}
+    \item Die Laborteilnehmenden sollen zu allererst ein Programm für den DLX-Simulator erstellen.
+    Das Programm soll zunächst 4 Integer-Zahlen von der Standardeingabe lesen, danach sollen diese möglichst performant miteinander multipliziert werden, hierbei sollten die Laborteilnehmenden die Multiplikationen so anordnen, dass zunächst zwei parallel ausführbare Multiplikationen durchgeführt werden und danach die Ergebnisse der Teiloperationen miteinander Multipliziert wird um auf das Endergebnis zu kommen. \\
+    Diese Einsicht ist nicht entscheidend, zeigt jedoch, dass das Konzept hinter superskalarer Architektur verstanden wurde. \\
+    Um nicht zu viel Zeit mit dem Programmieren zu verbringen, sollte sich am Beispiel example\_6\_input.s aus den DLX-Beispielen orientiert werden.
+   %
+   \newline (Zeitaufwand: 80 Minuten; Bewertung: 40 \%) \\
+   %
+   \textit{Antwort: Zum Lösen dieser Aufgabe müssen die bereits im Beispiel enthaltenden Einleseoperationen und die Multiplikation erneut im Programm dupliziert, sowie neue Variablen für die Integerwerte hinzugefügt werden. Es müssen nicht mehr als 20 Zeilen Code hinzugefügt werden. Das Programm muss danach Eingaben entgegennehmen und das Ergebnis einer Multiplikation korrekt anzeigen.}\\
+   \texttt{Der Lauffähige Code ist die erwartete Lösung, wenn die Studierenden mögen, kann Ihnen ab hier auch der Quelltext der Musterlösung (s. Anhang \ref{musterloesung}) gegeben werden.}
+   %
+   \item Zunächst soll nun der das Programm auf dem DLX Simulator ausgeführt werden, dabei soll das Pipelining des Simulators betrachtet und verstanden werden. \\ 
+   Die Teilnehmenden sollten verstehen, was die einzelnen Stufen tun und warum z.B. Leerstellen also Blockaden entstehen. Dabei sollen Eingabewerte kleiner Zehn benutzt werden, denn dort muss nur ein Zeichen eingelesen werden, dies benötigt weniger Speicher und ist somit schneller. Dies soll in der nächsten Aufgabe herausgearbeitet werden. 
+   %
+   \newline (Zeitaufwand: 20 Minuten; Bewertung: 10 \%) 
+   %
+   \newline
+   \textit{Antwort: Bei Zahlen $< 10$ werden im Beispielprogramm 192 Zyklen benötigt, wichtig ist, dass die Anzahl an Zyklen im nächsten Versuch größer ist.}\\
+   \texttt{Die Fragen sollen in kurzen Sätzen beantwortet werden.}
+   %
+    \item  Nun soll mit Zahlen  $> 10$ benutzt werden und der Unterschied in der Ausführungszeit soll mittels des Simulators ergründet werden.  
+    Durch das Einlesen von zweistelligen Zahlen benötigt das Programm länger.
+    \newline (Zeitaufwand: 20 Minuten; Bewertung 10 \%)
+    \newline 
+    \textit{Antwort: Das Einlesen einer Zahlt geschieht auf Zeichenebene, das heißt, sobald mehr als ein Zeichen eingelesen wird, muss die Einleseroutine nochmal durchlaufen werden. Somit erhöht sich die Anzahl der Zyklen im Programmablauf. Dies soll von den Laborteilnehmenden ausgearbeitet und beschrieben werden.}\\
+    %
+    \texttt{Die Fragen sollen in kurzen Sätzen beantwortet werden. Es soll mit der vorherigen Aufgabe verglichen werden.}
+    %
+    \item Nun sollen die Multiplikationen genauer untersucht werden. \\
+    Es soll herausgearbeitet werden, dass das Einführen einer Superskalaren-Architektur mit zwei ALUs sinnvoll ist, da dies die beiden ersten Teiloperationen echt parallel abarbeiten kann. \\
+    (Zeitaufwand: 30 Minuten; Bewertung 15 \%)
+     \newline  
+     \textit{Antwort: Eine superskalare Architektur würde die Operationen parallelisieren, dies spricht für die Einführung einer solchen.} \\
+    \texttt{Die Fragen sollen in kurzen Sätzen beantwortet werden.} 
+    
+    \item In der letzten Aufgabe soll das Verständnis der verschiedenen Einheiten und ihrer Funktion vertieft werden. Durch die Trennung von ALU für Integer und einer auf  Floatingpoint Zahlen spezialisierte Einheit, beginnt die Reihenfolge noch wichtiger zu sein, da das Ergebnis einer Integer Multiplikation weiterhin ein Integer ist, sobald einmal mit einer Floatingpoint Zahl multipliziert wird, wird die Floatingpoint ALU benötigt. Hierbei wird davon ausgegangen, das die ALU nur Integer, die Floatingpoint unit beides berechnen kann. \newline
+    (Zeitaufwand: 60 Minuten; Bewertung 25\%)\newline  
+    \textit{Antwort: Es sollte herausgearbeitet werden, dass die Reihenfolge wichtig ist und das zuerst die Operanden mit dem gleichen Datentypen und danach die Teilergebnisse miteinander multipliziert werden sollten, da somit die beiden Einheiten Ausgelastet werden. \\ 
+    Wird dies nicht beachtet kann es zu Wartezyklen kommen, wenn ausschließlich die Floatingpoint ALU benutzt wird, da zunächst je ein Float mit einem Integer multipliziert wird.}\\
+    \texttt{Dies soll in einigen Sätzen dokumentiert werden.}
+\end{enumerate}
+
+\appendix
+\newpage
+\section{Anhang}
+\lstinputlisting[label=musterloesung]{Aufgabe1.s}
+\newpage
+\addcontentsline{toc}{section}{Laboraufgabe : \subtitletext}
+\thispagestyle{empty}
+\section*{Laboraufgabe: \subtitletext}
+\input{Aufgabenblatt.tex}
+\newpage
+\addcontentsline{toc}{section}{Literatur}
+\printbibliography
+\end{document}

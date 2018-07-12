@@ -1,0 +1,47 @@
+\addcontentsline{toc}{subsection}{Einführung}
+\subsection*{Einführung}
+\einfuehrungstext
+
+\addcontentsline{toc}{subsubsection}{Thema}
+\subsubsection*{Thema}
+Dieser Versuch soll mittels eines Multiplikationsprogramms das Prinzip der Geschwindigkeitsoptimierung von Prozessoren mittels Pipelining und Superskalarer-Architektur mit dem DLX-Simulator zeigen.
+
+\addcontentsline{toc}{subsubsection}{Hilfsmittel}
+\subsubsection*{Hilfsmittel}
+\begin{itemize}
+    \item Buch von Andrew S. Tannenbaum und Todd Austin \enquote{Rechnerarchitektur} (im Text mit \cite{TaneRech2014} kenntlich gemacht)
+    \item Beispiel example\_6\_input.s
+\end{itemize}
+
+\addcontentsline{toc}{subsection}{Vorbereitung}
+\subsection*{Vorbereitung}
+Lesen Sie sich in die Dokumentation des DLX-Simulators (EinführungDLX.pdf) ein. 
+Beachten Sie auch das Konzept von Traps, diese werden für den Versuch gebraucht. Im Tannenbaum sind diese im Kapitel 5.6.4 nachzulesen.
+Weiterhin ist es Hilfreich das Dokument \enquote{Befehlssatz.pdf} (ausgedruckt) mit zu bringen.
+Beachten Sie, dass die Angaben für die Standardoptionen \\(\enquote{use-forwarding = true} und \enquote{Mips-compatibility-Mode = true}, die Branchprediction ist auf None gesetzt) 
+\newpage
+\addcontentsline{toc}{subsection}{Aufgaben}
+\thispagestyle{empty}
+\subsection*{Aufgaben}
+In diesem Versuch soll zunächst ein Programm mit dem DLX-Simulator erstellt werden bei dem die grundlegende Funktion des Simmulators und seinem Befehlssatz klar werden soll. \\
+Auf Grundlage dieses Programms sollen die Funktionsweise der Pipeline ausgearbeitet werden.
+Am Ende soll in der Theorie die Vorteile und Probleme von superskalaren Architekturen ergründet werden.  
+Bei allen Aufgaben sollen die Fragen oder Ergebnisse in kurzen Sätzen beantwortet bzw. Dokumentiert werden. Die Lösung für Aufgabe 1 ist der lauffähige Quellcode für den Simulator.
+\begin{enumerate}
+    \item Schreiben Sie ein Programm für den DLX-Simulator.
+    Das Programm soll zunächst vier Integer-Zahlen von der Standardeingabe lesen, danach sollen diese (möglichst performant miteinander) multipliziert werden. \\
+    Das Ergebnis soll wieder auf der Standardausgabe ausgegeben werden.  \\
+    Orientieren Sie sich dabei am Beispiel example\_6\_input.s aus den DLX Beispielen. \\
+   \textit{\textit{Sie sollten etwa 20 Zeile}n Code hinzufügen. Nach dem Lösen dieser Aufgabe können Sie entscheiden ob Sie mit Ihrer oder der Musterlösung weiterarbeiten wollen. Diese erhalten Sie auf Nachfrage beim Dozenten.}
+    \item Simulieren sie nun die Abarbeitung des Programms auf dem DLX Simulator, benutzen sie dabei Zahlen $< 10$. Vollziehen sie nach, was genau die Pipelining Stufen des Simulators machen und welche Auswirkungen das hat. \\ 
+    Gibt es Auffälligkeiten? \\
+    Wie viele Zyklen braucht Ihr Programm? 
+    \item  Benutzen sie zahlen $> 10$ und erklären Sie den Unterschied der Ausführungszeit. Dafür können Sie die Theorien mit dem Simulator überprüfen. 
+    \item Springen Sie in ihrem Programm vor die Stelle wo die Multiplikationen ausgeführt werden.
+    \\
+    Legen Sie dar ob und wenn ja, warum bzw. wenn nein, warum nicht, das Einführen einer Superskalaren-Architektur mit zwei ALUs sinnvoll ist. Nehmen Sie dabei an, dass Rechenoperationen (addi, multi, etc.) jeweils 2 Zyklen für jede Berechnung brauchen. Die Restlichen Stufen (außer das Speichern) der Pipeline jeweils nur einen. 
+    %
+    \item Würde der DLX-Simulator auch Floatingpointoperationen unterstützen (was er nicht tut) und man würde zwei der Integerwerte mit Floatingpoint Zahlen ersetzten, würde die Reihenfolger der Operationen bei einer superskalaren Architektur (mit einer Integer ALU und einer Floatingpoint ALU, wobei die Floatingpoint ALU auch Integer als auch Floatingpoint Zahlen als Operanden nimmt) einen Unterschied machen? \\
+    Wenn ja, was wäre die Optimale Reihenfolge der Operationen um das Produkt aller vier Faktoren zu bekommen? \\
+    Welche Probleme können bei einer Anderen Reihenfolge auftreten?
+\end{enumerate}
